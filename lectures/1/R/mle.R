@@ -1,8 +1,3 @@
-library(readr)
-library(dplyr)
-library(ggplot2)
-
-
 mle_estimator_lm <- function (w, phi, t) {
     if(is.vector(t) == FALSE)
       t <- as.vector(t)
