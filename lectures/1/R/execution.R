@@ -4,8 +4,20 @@ library(dplyr)
 library(ggplot2)
 source("lectures/1/R/mle.R")
 
-# load data
-data_exercise <- readr::read_delim(file = "../Datasets/synthetic_regression/synthetic_regression.txt", 
-                            delim = " ")
+# initial parameters ####
+m <- 30 # number of variables taken for the model
 
-#comentario de prueba
+# load data ####
+data_exercise <- utils::read.table(file = "../Datasets/synthetic_regression/synthetic_regression.txt",
+                                  nrow = 300)[,1:(m+1)]
+
+# vector t (t_vector) and matrix phi
+t_vector <- as.vector(data_exercise[ , "t"])
+phi      <- cbind(rep(1, length(t_vector)), 
+                  data_exercise[,-which(names(data_exercise) %in% c("t"))])
+colnames(phi)[1] <- "const"
+
+optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi, t_vector = t_vector, method = "BFGS", control = list(trace = 1, maxit = 10000, fnscale = -1),
+      hessian = TRUE)
+
+runif(m + 1, 0, 1)
