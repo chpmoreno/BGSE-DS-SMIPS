@@ -1,14 +1,16 @@
 # load libraries and functions needed
-library(readr)
 library(dplyr)
 library(ggplot2)
+library(ggthemes)
+library(grid)
+library(gridExtra)
 source("lectures/1/R/mle.R")
 
 # initial parameters ####
 m <- 30 # number of variables taken for the model
 
 # load data ####
-data_exercise <- utils::read.table(file = "../Datasets/synthetic_regression/synthetic_regression.txt",
+data_exercise <- read.table(file = "../Datasets/synthetic_regression/synthetic_regression.txt",
                                   nrow = 300)[,1:(m+1)]
 
 # vector t (t_vector) and matrix phi
@@ -22,4 +24,9 @@ mle_estimation_result <- optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi,
                                control = list(trace = 1, maxit = 10000, fnscale = -1),
                                hessian = TRUE)
 
-mle_results <- mle_results(mle_estimation_result, t_vector, phi)
+mle_results <- mle_result(mle_estimation_result, t_vector, phi)
+
+
+
+
+
