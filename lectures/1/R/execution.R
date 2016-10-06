@@ -17,7 +17,9 @@ phi      <- cbind(rep(1, length(t_vector)),
                   data_exercise[,-which(names(data_exercise) %in% c("t"))])
 colnames(phi)[1] <- "const"
 
-optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi, t_vector = t_vector, method = "BFGS", control = list(trace = 1, maxit = 10000, fnscale = -1),
-      hessian = TRUE)
+mle_estimation_result <- optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi, 
+                               t_vector = t_vector, method = "BFGS", 
+                               control = list(trace = 1, maxit = 10000, fnscale = -1),
+                               hessian = TRUE)
 
-runif(m + 1, 0, 1)
+mle_results <- mle_results(mle_estimation_result, t_vector, phi)
