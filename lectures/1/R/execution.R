@@ -19,13 +19,15 @@ phi      <- cbind(rep(1, length(t_vector)),
                   data_exercise[,-which(names(data_exercise) %in% c("t"))])
 colnames(phi)[1] <- "const"
 
+# mle_estimation
 mle_estimation_result <- optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi, 
                                t_vector = t_vector, method = "BFGS", 
                                control = list(trace = 1, maxit = 10000, fnscale = -1),
                                hessian = TRUE)
-
+# mle_results
 mle_results <- mle_result(mle_estimation_result, t_vector, phi)
 
+# mle graphics
 mle_graphics <- mle_plots(mle_results)
 
 pdf(file = "lectures/1/Graphics/ci_plot.pdf", height = 7, width = 9)
