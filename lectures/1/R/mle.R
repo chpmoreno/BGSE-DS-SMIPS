@@ -59,7 +59,7 @@ mle_plots <- function(mle_results){
   qq_plot_data <- qq(mle_results$e)
   
   qq_plot <- ggplot(qq_plot_data$qq_df, aes(x=z, y=ord.x)) +
-    geom_abline(intercept = qq_plot_data$qq_coef[1], slope = qq_plot_data$qq_coef[2]) +
+    geom_abline(intercept = qq_plot_data$qq_coef[1], slope = qq_plot_data$qq_coef[2], color = "red") +
     geom_ribbon(aes(ymin = lower, ymax = upper), alpha=0.2, color = "cadetblue3", fill = "cadetblue2") +
     geom_point() +
     ggtitle("Q-Q plot") +
