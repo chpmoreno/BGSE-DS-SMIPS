@@ -11,7 +11,7 @@ m <- 30 # number of variables taken for the model
 
 # load data ####
 data_exercise <- read.table(file = "../Datasets/synthetic_regression/synthetic_regression.txt",
-                                  nrow = 300)[,1:(m+1)]
+                                  nrow = 300)[,1:(m + 1)]
 
 # vector t (t_vector) and matrix phi
 t_vector <- as.vector(data_exercise[ , "t"])
@@ -26,7 +26,16 @@ mle_estimation_result <- optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi,
 
 mle_results <- mle_result(mle_estimation_result, t_vector, phi)
 
+mle_graphics <- mle_plots(mle_results)
 
+pdf(file = "lectures/1/Graphics/ci_plot.pdf", height = 7, width = 9)
+  print(mle_graphics$ci_plot)
+dev.off()
 
+pdf(file = "lectures/1/Graphics/st_res_plot.pdf", height = 7, width = 9)
+  print(mle_graphics$st_res_plot)
+dev.off()
 
-
+pdf(file = "lectures/1/Graphics/qq_plot.pdf", height = 7, width = 9)
+print(mle_graphics$qq_plot)
+dev.off()
