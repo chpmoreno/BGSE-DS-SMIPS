@@ -9,7 +9,7 @@ source("lectures/1/R/mle.R")
 # initial parameters ####
 m <- 30 # number of variables taken for the model
 
-# load data ####
+# load data - Find it on https://1drv.ms/t/s!Ai0XbELt7PXquFJtWenDbxvksoXM ####
 data_exercise <- read.table(file = "../Datasets/synthetic_regression/synthetic_regression.txt",
                                   nrow = 300)[,1:(m + 1)]
 
