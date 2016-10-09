@@ -1,3 +1,5 @@
+# Author: José Fernado Moreno Gutiérrez
+
 # load libraries and functions needed
 library(dplyr)
 library(ggplot2)
