@@ -42,7 +42,8 @@ plot_tot <- ggplot(data = filter(data_plot_tot, basis == "observed"), aes(x = x,
                       size = 0.8) +
             scale_colour_manual(values = c("limegreen", "blue", "red"),
                                 guide = guide_legend(title = NULL,
-                                                     override.aes = list(linetype = c("solid", "blank", "solid")))) +
+                                                     override.aes = list(linetype = c("solid", "blank", "solid"),
+                                                                         shape = c(NA, 16, NA)))) +
             ggtitle(expression(paste("t / x observed and estimated (M = 9, ", delta, " = 2, q = 100)"))) + 
             theme_economist()
 plot_tot
