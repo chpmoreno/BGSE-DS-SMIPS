@@ -26,6 +26,7 @@ mle_estimation_result <- optim(runif(m + 2, 0, 1), mle_estimator_lm, phi = phi,
                                t_vector = t_vector, method = "BFGS", 
                                control = list(trace = 1, maxit = 10000, fnscale = -1),
                                hessian = TRUE)
+
 # mle_results
 mle_results <- mle_result(mle_estimation_result, t_vector, phi)
 
